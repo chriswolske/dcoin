@@ -2806,9 +2806,37 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6"));
         block.print();
-        assert(hash == hashGenesisBlock);
+        //assert(hash == hashGenesisBlock);
+
+	// If genesis block hash does not match, then generate new genesis hash.
+	if (block.GetHash() != hashGenesisBlock)
+	{
+	   printf("Searching for genesis Block...\n");
+	   uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+	   uint thash;
+
+	   while(true)
+	   {
+	        thash = scrypt_blockhash(BEGIN(block.nVersion));
+		if (thash <= hashTarget)
+		    break;
+		if ((block.nNonce & 0xFFF) ==0)
+		{
+		    printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+		}
+		++block.nNonce;
+		if (block.nNonce == 0)
+		{
+		    printf("NONCE WRAPPED, incrementing time\n");
+		    ++block.nTime;
+		}
+	   }
+	   printf("block.nTime = %u \n", block.nTime);
+	   printf("block.nNonce = %u \n", block.nNonce);
+	   printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+	}
 
         // Start new block file
         try {

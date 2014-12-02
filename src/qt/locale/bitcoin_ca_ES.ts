@@ -243,8 +243,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Advertència: Si encripteu el vostre moneder i perdeu la constrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES LITECOINS&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DCOINS&lt;/b&gt;!</source>
+        <translation>Advertència: Si encripteu el vostre moneder i perdeu la constrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES DCOINS&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -270,8 +270,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Litecoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your litecoins from being stolen by malware infecting your computer.</source>
-        <translation>Litecoin es tancarà ara per acabar el procés d&apos;encriptació. Recorda que encriptar el teu moneder no protegeix completament els teus litecoins de ser robades per programari maliciós instal·lat al teu ordinador.</translation>
+        <source>Litecoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dcoins from being stolen by malware infecting your computer.</source>
+        <translation>Litecoin es tancarà ara per acabar el procés d&apos;encriptació. Recorda que encriptar el teu moneder no protegeix completament els teus dcoins de ser robades per programari maliciós instal·lat al teu ordinador.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -420,7 +420,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+49"/>
         <source>Modify configuration options for Litecoin</source>
-        <translation>Modificar les opcions de configuració per litecoin</translation>
+        <translation>Modificar les opcions de configuració per dcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1060,8 +1060,8 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start litecoin: click-to-pay handler</source>
-        <translation>No es pot iniciar litecoin: manejador clicla-per-pagar</translation>
+        <source>Cannot start dcoin: click-to-pay handler</source>
+        <translation>No es pot iniciar dcoin: manejador clicla-per-pagar</translation>
     </message>
 </context>
 <context>
@@ -2188,8 +2188,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or litecoind</source>
-        <translation>Enviar comanda a -servidor o litecoind</translation>
+        <source>Send command to -server or dcoind</source>
+        <translation>Enviar comanda a -servidor o dcoind</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2208,13 +2208,13 @@ Address: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: litecoin.conf)</source>
-        <translation>Especificat arxiu de configuració (per defecte: litecoin.conf)</translation>
+        <source>Specify configuration file (default: dcoin.conf)</source>
+        <translation>Especificat arxiu de configuració (per defecte: dcoin.conf)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: litecoind.pid)</source>
-        <translation>Especificar arxiu pid (per defecte: litecoind.pid)</translation>
+        <source>Specify pid file (default: dcoind.pid)</source>
+        <translation>Especificar arxiu pid (per defecte: dcoind.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2291,7 +2291,7 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=litecoinrpc
+rpcuser=dcoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -2299,7 +2299,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s &quot;Litecoin Alert&quot; admin@foo.com
 </source>
-        <translation>%s has de establir una contrasenya RPC a l&apos;arxiu de configuració:\n%s\nEs recomana que useu la següent constrasenya aleatòria:\nrpcuser=litecoinrpc\nrpcpassword=%s\n(no necesiteu recordar aquesta contrsenya)\nEl nom d&apos;usuari i contrasenya NO HAN de ser els mateixos.\nSi l&apos;arxiu no existeix, crea&apos;l amb els permisos d&apos;arxiu de només lectura per al propietari.\nTambé es recomana establir la notificació d&apos;alertes i així seràs notificat de les incidències;\nper exemple: alertnotify=echo %%s | mail -s &quot;Litecoin Alert&quot; admin@foo.com</translation>
+        <translation>%s has de establir una contrasenya RPC a l&apos;arxiu de configuració:\n%s\nEs recomana que useu la següent constrasenya aleatòria:\nrpcuser=dcoinrpc\nrpcpassword=%s\n(no necesiteu recordar aquesta contrsenya)\nEl nom d&apos;usuari i contrasenya NO HAN de ser els mateixos.\nSi l&apos;arxiu no existeix, crea&apos;l amb els permisos d&apos;arxiu de només lectura per al propietari.\nTambé es recomana establir la notificació d&apos;alertes i així seràs notificat de les incidències;\nper exemple: alertnotify=echo %%s | mail -s &quot;Litecoin Alert&quot; admin@foo.com</translation>
     </message>
     <message>
         <location line="+17"/>

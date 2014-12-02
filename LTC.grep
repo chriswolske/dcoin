@@ -1,0 +1,5 @@
+src/main.h
+src/qt/forms/sendcoinsdialog.ui
+src/qt/forms/overviewpage.ui
+src/qt/bitcoinunits.cpp
+src/rpcblockchain.cpp

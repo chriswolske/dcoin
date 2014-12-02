@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = dcoin-qt
-macx:TARGET = "Litecoin-Qt"
+macx:TARGET = "Dcoin-Qt"
 VERSION = 0.8.7.4
 INCLUDEPATH += src src/json src/qt
 QT += core gui network

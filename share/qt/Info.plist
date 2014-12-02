@@ -15,16 +15,16 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>Litecoin-Qt</string>
+	<string>Dcoin-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.dcoin.Litecoin-Qt</string>
+	<string>org.dcoin.Dcoin-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>org.dcoin.LitecoinPayment</string>
+            <string>org.dcoin.DcoinPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
               <string>dcoin</string>

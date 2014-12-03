@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
+uint256 hashGenesisBlock("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0; this is actually testnet?
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Dcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2746,7 +2746,8 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
+        // hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
+	hashGenesisBlock = uint256("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0
     }
 
     //
@@ -2770,7 +2771,8 @@ bool InitBlockIndex() {
     printf("Initializing databases...\n");
 
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
-    if (!fReindex) {
+    // if (!fReindex) {
+    if (true) {
         // Genesis Block:
         // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
         //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
@@ -2807,39 +2809,11 @@ bool InitBlockIndex() {
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6"));
+
         block.print();
-        //assert(hash == hashGenesisBlock);
-
-	// If genesis block hash does not match, then generate new genesis hash.
-	if (block.GetHash() != hashGenesisBlock)
-	{
-	   printf("Searching for genesis Block...\n");
-	   uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
-	   uint thash;
-
-	   while(true)
-	   {
-		static char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
-		scrypt_1024_1_1_256_sp(BEGIN(block.nVersion), BEGIN(thash), scratchpad);
-		if (thash <= hashTarget)
-		    break;
-		if ((block.nNonce & 0xFFF) ==0)
-		{
-		    printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
-		}
-		++block.nNonce;
-		if (block.nNonce == 0)
-		{
-		    printf("NONCE WRAPPED, incrementing time\n");
-		    ++block.nTime;
-		}
-	   }
-	   printf("block.nTime = %u \n", block.nTime);
-	   printf("block.nNonce = %u \n", block.nNonce);
-	   printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
-	}
-
-        // Start new block file
+        assert(hash == hashGenesisBlock);
+        
+	// Start new block file
         try {
             unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
             CDiskBlockPos blockPos;

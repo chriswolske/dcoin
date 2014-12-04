@@ -35,7 +35,11 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
+<<<<<<< HEAD
+uint256 hashGenesisBlock("0x3fb9f2455eea611d1bc6fc7d1407b67905a71aa215dfeeeaf4cd49294efe61c0");
+=======
 uint256 hashGenesisBlock("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0; this is actually testnet?
+>>>>>>> master
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Dcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2747,7 +2751,11 @@ bool LoadBlockIndex()
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
         // hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
+<<<<<<< HEAD
+	hashGenesisBlock = uint256("0xc2eb59cc815c67f497606715ce5b82f6672e69cb07aac61dfe4d01a7fa22116c");
+=======
 	hashGenesisBlock = uint256("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0
+>>>>>>> master
     }
 
     //
@@ -2781,13 +2789,13 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 2014-12-02: Obama Offers New Standards on Police Gear";
+        const char* pszTimestamp = "NY Times 2014-12-02: Obama Offers New Standards on Police Gear - mainnet";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG; // original
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
@@ -2795,12 +2803,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1417558370;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2084524493;
+        block.nNonce   = 2000774788; //mainnet, from GenesisH0 output
 
         if (fTestNet)
         {
-            block.nTime    = 1417558370;
-            block.nNonce   = 385270584;
+            block.nTime    = 1417558371;
+            block.nNonce   = 2000477539; //testnet, from GenesisH0 output
         }
 
         //// debug print
@@ -2808,9 +2816,15 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+<<<<<<< HEAD
+ 	// assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6")); // testnet
+ 	assert(block.hashMerkleRoot == uint256("0x24d9e9cfa6de56d3b40469e5bcff97e8f0dbe60ac54f7866117067639f3c4d27")); // mainnet
+	block.print();
+=======
         assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6"));
 
         block.print();
+>>>>>>> master
         assert(hash == hashGenesisBlock);
         
 	// Start new block file

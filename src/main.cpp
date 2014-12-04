@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
+uint256 hashGenesisBlock("0x3fb9f2455eea611d1bc6fc7d1407b67905a71aa215dfeeeaf4cd49294efe61c0");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Dcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2780,7 +2780,7 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 2014-12-02: Obama Offers New Standards on Police Gear";
+        const char* pszTimestamp = "NY Times 2014-12-02: Obama Offers New Standards on Police Gear - mainnet";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2794,12 +2794,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1417558370;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2000000000;
+        block.nNonce   = 2000774788; //mainnet, from GenesisH0 output
 
         if (fTestNet)
         {
             block.nTime    = 1417558371;
-            block.nNonce   = 2000477539;
+            block.nNonce   = 2000477539; //testnet, from GenesisH0 output
         }
 
         //// debug print
@@ -2807,8 +2807,8 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        // assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
- 	assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6"));
+ 	// assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6")); // testnet
+ 	assert(block.hashMerkleRoot == uint256("0x24d9e9cfa6de56d3b40469e5bcff97e8f0dbe60ac54f7866117067639f3c4d27")); // mainnet
 	block.print();
         assert(hash == hashGenesisBlock);
 

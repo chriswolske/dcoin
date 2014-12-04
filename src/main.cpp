@@ -35,7 +35,11 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
+<<<<<<< HEAD
 uint256 hashGenesisBlock("0x3fb9f2455eea611d1bc6fc7d1407b67905a71aa215dfeeeaf4cd49294efe61c0");
+=======
+uint256 hashGenesisBlock("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0; this is actually testnet?
+>>>>>>> master
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Dcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2747,7 +2751,11 @@ bool LoadBlockIndex()
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
         // hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
+<<<<<<< HEAD
 	hashGenesisBlock = uint256("0xc2eb59cc815c67f497606715ce5b82f6672e69cb07aac61dfe4d01a7fa22116c");
+=======
+	hashGenesisBlock = uint256("0xed950f1e0c992c3ee53c7a7873504ad8a72ca45817d34f506875af457f00d84a"); // found with GenesisH0
+>>>>>>> master
     }
 
     //
@@ -2771,7 +2779,8 @@ bool InitBlockIndex() {
     printf("Initializing databases...\n");
 
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
-    if (!fReindex) {
+    // if (!fReindex) {
+    if (true) {
         // Genesis Block:
         // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
         //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
@@ -2807,12 +2816,18 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+<<<<<<< HEAD
  	// assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6")); // testnet
  	assert(block.hashMerkleRoot == uint256("0x24d9e9cfa6de56d3b40469e5bcff97e8f0dbe60ac54f7866117067639f3c4d27")); // mainnet
 	block.print();
-        assert(hash == hashGenesisBlock);
+=======
+        assert(block.hashMerkleRoot == uint256("0x563d1a0596b61bb9bbc3dadfd9464f1938566066a0dafc639f8975f12b6f7da6"));
 
-        // Start new block file
+        block.print();
+>>>>>>> master
+        assert(hash == hashGenesisBlock);
+        
+	// Start new block file
         try {
             unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
             CDiskBlockPos blockPos;
